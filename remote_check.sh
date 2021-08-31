@@ -13,6 +13,15 @@
 ##
 server_name=$(hostname)
 
+
+function networks_list() {
+    echo "This command list the networks SDN"
+	echo "The current networks  ${server_name} is: "
+	OUTPUT=$(/sbin/ip -4 -o a | cut -d ' ' -f 2,7 | cut -d '/' -f 1 |grep zt* 2>&1)
+	echo "$OUTPUT"
+}
+
+
 function memory_check() {
     echo "#######"
 	echo "The current memory usage on ${server_name} is: "
